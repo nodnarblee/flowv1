@@ -3,88 +3,97 @@
 
 <div class="container">
   <div class="row clearfix">
-    <div class="col-md-4 column">
-      <!--<a href="#" class="pull-left"><img src="http://retorica.labhackercd.net/assets/ruby_logo-4fdd2db574707ed8a97f4239bd6be0e7.png" class="media-object" alt='' /></a>-->
-      <h2 class="text-left">
-        Ruby Flow
-      </h2>
-      <% @rf.each do |post| %>
-      <blockquote>
 
-        <h3 class="text-left">
-          <%= post["title"]["text"] %>
-        </h3>
-        <p class="text-left">
-          <a href = <%= post["links"]["href"] %> target="_blank" >
-          <%= post["description"]["text"] %>
-          </a>
-        </p>
-        <p>
-          <a href = <%= post["author"]["href"] %> target="_blank" >
-            <%= post["author"]["text"] %>
-          </a>
-        </p>
-        <button type="button" class="btn btn-xs">
-          <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Favorite This!
-        </button>
-      </blockquote>
-      <br>
-      <% end %>
+    <div class="col-md-4 column">
+      <h2 class="text-center">Ruby Flow <%= image_tag "rubylogo.png", class: "icon" %> </h2>
+      <div class="panel panel-default">
+        <div class="panel-body">
+              <% @rf.each do |post| %>
+                  <blockquote>
+
+                    <h3 class="text-left">
+                      <%= post["title"]["text"] %>
+                    </h3>
+                    <p class="text-left">
+                      <a href = <%= post["links"]["href"] %> target="_blank" >
+                        <%= post["description"]["text"] %>
+                      </a>
+                    </p>
+                    <p>
+                      <a href = <%= post["author"]["href"] %> target="_blank" >
+                        <%= post["author"]["text"] %>
+                      </a>
+                    </p>
+                    <button type="button" class="btn btn-xs">
+                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Favorite This!
+                    </button>
+                  </blockquote>
+              <br>
+              <% end %>
+        </div>
+      </div>
     </div>
 
     <div class="col-md-4 column">
-      <h2 class="text-left"> Hacker News </h2>
-      <% @hn.each do |post| %>
-      <blockquote>
-        <h3 class="text-left">
-          <a href = <%= post["title"]["href"] %> target="_blank" >
-            <%= post["title"]["text"] %>
-          </a>
-        </h3>
-        <p class="text-left">
-          Posted by: <a href = <%= post["author"]["href"] %> target="_blank"  >
-            <%= post["author"]["text"] %>
-          </a> //
-          <a href = <%= post["time_ago"]["href"] %> target="_blank"  >
-          <%= post["time_ago"]["text"] %>
-          </a> //
-          <a href = <%= post["comments"]["href"] %> target="_blank"  >
-            <%= post["comments"]["text"] %>
-          </a>
-        </p>
-        <button type="button" class="btn btn-xs">
-          <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Favorite This!
-        </button>
-      </blockquote>
-      <br>
-      <% end %>
+      <h2 class="text-center"> Hacker News <%= image_tag "hackernews.ico", class: "icon" %> </h2>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <% @hn.each do |post| %>
+                  <blockquote>
+                    <h3 class="text-left">
+                      <a href = <%= post["title"]["href"] %> target="_blank" >
+                        <%= post["title"]["text"] %>
+                      </a>
+                    </h3>
+                    <p class="text-left">
+                      Posted by: <a href = <%= post["author"]["href"] %> target="_blank"  >
+                      <%= post["author"]["text"] %>
+                    </a> //
+                      <a href = <%= post["time_ago"]["href"] %> target="_blank"  >
+                        <%= post["time_ago"]["text"] %>
+                      </a> //
+                      <a href = <%= post["comments"]["href"] %> target="_blank"  >
+                        <%= post["comments"]["text"] %>
+                      </a>
+                    </p>
+                    <button type="button" class="btn btn-xs">
+                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Favorite This!
+                    </button>
+                  </blockquote>
+                  <br>
+              <% end %>
+        </div>
+      </div>
     </div>
 
     <div class="col-md-4 column">
-      <h2 class="text-left"> Thought Bot </h2>
-      <% @tb.each do |post| %>
-          <blockquote>
-            <h3 class="text-left">
-              <a href = <%= post["title"]["href"] %> target="_blank" >
-                <%= post["title"]["text"] %>
-              </a>
-            </h3>
-            <p class="text-left">
-              <a href = <%= post["description"]["href"] %> target="_blank"  >
-              <%= post["description"]["text"] %>
-              </a>
-              <a href = <%= post["Author"]["href"] %> target="_blank"  >
-                <%= post["Author"]["text"] %>
-              </a>
-            </p>
+      <h2 class="text-center"> Thought Bot <%= image_tag "thoughtbot.png", class: "icon" %> </h2>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <% @tb.each do |post| %>
+              <blockquote>
+                <h3 class="text-left">
+                  <a href = <%= post["title"]["href"] %> target="_blank" >
+                    <%= post["title"]["text"] %>
+                  </a>
+                </h3>
+                <p class="text-left">
+                  <a href = <%= post["description"]["href"] %> target="_blank"  >
+                  <%= post["description"]["text"] %>
+                  </a>
+                  <a href = <%= post["Author"]["href"] %> target="_blank"  >
+                    <%= post["Author"]["text"] %>
+                  </a>
+                </p>
 
-            <button type="button" class="btn btn-xs">
-              <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Favorite This!
-            </button>
-          </blockquote>
-
+                <button type="button" class="btn btn-xs">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Favorite This!
+                </button>
+              </blockquote>
           <br>
-      <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
