@@ -2,9 +2,12 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, only: [
     :inside
   ]
+  before_action :ruby_flow, only: [:home]
 
   def home
-    byebug
+    @rf = ruby_flow
+    @hn = hacker_news
+    @tb = thought_bot
   end
 
   def inside
@@ -20,7 +23,6 @@ class PagesController < ApplicationController
   #   redirect_to root_path
   # end
 
-  
   def email
     @name = params[:name]
     @email = params[:email]
@@ -42,6 +44,23 @@ class PagesController < ApplicationController
       ContactMailer.contact_message(@name,@email,@message).deliver_now
       redirect_to root_path, notice: "Your message was sent. Thank you."
     end
+  end
+
+  private
+
+  def ruby_flow
+    response  = JSON(RestClient.get 'https://www.kimonolabs.com/api/6xvfa604?apikey=tkXmEDE5rZ4G9HyMPKZWOiuMG7pWCJv3')
+    ruby_flow = response["results"]["collection1"]
+  end
+
+  def hacker_news
+    response = JSON(RestClient.get 'https://www.kimonolabs.com/api/cq4sa5qy?apikey=tkXmEDE5rZ4G9HyMPKZWOiuMG7pWCJv3')
+    hacker_news = response["results"]["collection1"]
+  end
+
+  def thought_bot
+    response = JSON(RestClient.get 'https://www.kimonolabs.com/api/5agteaga?apikey=tkXmEDE5rZ4G9HyMPKZWOiuMG7pWCJv3')
+    thought_bot = response["results"]["collection1"]
   end
 
 end

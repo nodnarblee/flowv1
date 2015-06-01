@@ -11,6 +11,9 @@ gem 'turbolinks', '2.5.3'
 gem 'jbuilder', '2.2.16'
 gem 'bcrypt', '3.1.10'
 
+# Rest Client
+gem 'rest-client'
+
 # Necessary for Windows OS (won't install on *nix systems)
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
@@ -30,7 +33,8 @@ gem 'railsbricks'
 gem 'bootstrap-sass', '3.3.4.1'
 
 group :development, :test do
-  gem 'byebug', '5.0.0'
+  # gem 'byebug', '5.0.0'
+  gem 'pry'
   gem 'web-console', '2.1.2'
 
   # Figaro: https://github.com/laserlemon/figaro
