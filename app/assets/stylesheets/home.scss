@@ -7,3 +7,19 @@
   max-width: 20%;
   display: inline-block;
 }
+
+.navbar-default {
+  background-color: #ff6666;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+
+.container {
+  width: 90%;
+}
+
+.notice {
+  position: absolute;
+}

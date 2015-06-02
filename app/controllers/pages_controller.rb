@@ -10,7 +10,8 @@ class PagesController < ApplicationController
     @tb = thought_bot
   end
 
-  def inside
+  def favourites
+    @articles = current_user.articles
   end
   
   # def posts

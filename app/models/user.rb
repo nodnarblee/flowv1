@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   
 # Relations
 has_many :posts
+has_many :favourites
+has_many :articles, through: :favourites
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
