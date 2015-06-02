@@ -1,5 +1,9 @@
 class Article < ActiveRecord::Base
 
+  # include ArticleValidations
+
+  # validates :title, uniqueness: { scope: user_id }
+
   has_many :favourites
   has_many :users, through: :favourites
 

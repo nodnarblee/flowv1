@@ -3,7 +3,8 @@ var ready = function() {
     $('.favourite').on('click', function(){
 
         var article = this.parentElement
-        console.log(article)
+        //console.log(article)
+        var source = $(article).data("source")
         var article_link = $(article).find('.title').attr('href')
         var author_link = $(article).find('.author').attr('href')
         var description = $(article).find('.description').text().toString();
@@ -26,15 +27,15 @@ var ready = function() {
                 });
             }
         });
-        //
-        //console.log(article)
-        //console.log(article_link)
-        //console.log(author_link)
-        //console.log(title.toString())
-        //console.log(description)
+
+        //var source = $(article).find('title')
+        console.log(source)
+        //console.log($(source).data("source"))
+        //console.log($(article).html().data("source"))
+        //console.log($(article).find('title').data("source"))
 
     });
 }
 
-
-
+$(document).ready(ready);
+$(document).on('page:load', ready);

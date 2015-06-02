@@ -34,13 +34,17 @@
                 Source
               </td>
               <td>
-                <%= article.title %>
+                <a href="<%=article.article_link%>">
+                  <%= article.title %>
+                </a>
               </td>
               <td>
                 <%= article.description %>
               </td>
               <td>
-                <%= article.author %>
+                <a href="<%=article.author_link%>">
+                  <%= article.author %>
+                </a>
               </td>
               <td>
                 <%= article.created_at.strftime("%b %d, %Y") %>

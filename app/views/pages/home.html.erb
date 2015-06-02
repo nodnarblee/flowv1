@@ -6,9 +6,9 @@
       <div class="panel panel-default">
         <div class="panel-body">
               <% @rf.each do |post| %>
-                  <blockquote>
+                  <blockquote class="block" data-source="ruby-flow">
                     <h3 class="text-left">
-                      <a href = "<%= post["links"]["href"] %>" target="_blank" class="title" data-source="ruby-flow">
+                      <a href = "<%= post["links"]["href"] %>" target="_blank" class="title" >
                       <%= post["title"]["text"] %>
                       </a>
                     </h3>
@@ -37,9 +37,9 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <% @hn.each do |post| %>
-                  <blockquote>
+                  <blockquote class="block" data-source="hacker-news">
                     <h3 class="text-left">
-                      <a href = <%= post["title"]["href"]%> target="_blank" class="title" data-source="hacker-news" >
+                      <a href = <%= post["title"]["href"]%> target="_blank" class="title" >
                         <%= post["title"]["text"] %>
                       </a>
                     </h3>
@@ -69,7 +69,7 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <% @tb.each do |post| %>
-              <blockquote>
+              <blockquote class="block" data-source="thought-bot" >
                 <h3 class="text-left">
                   <a href = <%= post["title"]["href"] %> target="_blank" class="title" data-source="thought-bot" >
                     <%= post["title"]["text"] %>

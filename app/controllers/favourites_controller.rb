@@ -7,7 +7,11 @@ class FavouritesController < ApplicationController
     article_link = params[:article_link].gsub("\n", ' ').squeeze(' ')
     author_link = params[:author_link].gsub("\n", ' ').squeeze(' ')
 
-    @article = current_user.articles.create(title: title, author: author, description: description)
+    @article = current_user.articles.create(title: title,
+                                            author: author,
+                                            description: description,
+                                            article_link: article_link,
+                                            author_link: author_link)
 
     if @article.save
       flash.now[:notice] = 'Nice, your article has been saved!'

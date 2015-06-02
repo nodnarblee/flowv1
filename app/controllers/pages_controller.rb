@@ -13,16 +13,6 @@ class PagesController < ApplicationController
   def favourites
     @articles = current_user.articles
   end
-  
-  # def posts
-  #   @posts = Post.published.page(params[:page]).per(10)
-  # end
-  #
-  # def show_post
-  #   @post = Post.friendly.find(params[:id])
-  # rescue
-  #   redirect_to root_path
-  # end
 
   def email
     @name = params[:name]
