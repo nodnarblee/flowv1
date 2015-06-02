@@ -18,7 +18,8 @@ var ready = function() {
                     title: title,
                     author: author,
                     author_link: author_link,
-                    article_link: article_link },
+                    article_link: article_link,
+                    source: source},
             success: function(){
                 console.log('firing');
                 console.log($(article));

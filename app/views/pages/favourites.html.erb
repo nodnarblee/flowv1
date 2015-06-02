@@ -31,7 +31,13 @@
           <% @articles.each do |article| %>
             <tr class="active">
               <td>
-                Source
+                <% if article.source == "ruby-flow" %>
+                   <%= image_tag 'rubylogo.png', class: 'icon' %>
+                <% elsif article.source == "hacker-news" %>
+                   <%= image_tag 'hackernews.ico', class: 'icon' %>
+                <% else %>
+                   <%= image_tag 'thoughtbot.png', class: 'icon' %>
+                <% end %>
               </td>
               <td>
                 <a href="<%=article.article_link%>">
@@ -39,7 +45,11 @@
                 </a>
               </td>
               <td>
-                <%= article.description %>
+                <% if article.description.present? %>
+                  <%= article.description %>
+                <% else %>
+                  No description available... 
+                <% end %>
               </td>
               <td>
                 <a href="<%=article.author_link%>">
