@@ -1,5 +1,5 @@
 
-<h1>Favourites</h1>
+<h1 class="favourite-title">Favourites</h1>
 <!--<p>This page is only visible to signed in users. Edit it at: <em>views/pages/inside.html.erb</em></p>-->
 <!--<p>You can change the page users see after successfully signing in within the method <em>after_sign_in_path_for</em> inside <strong>application_controller.rb</strong></p>-->
 
@@ -30,17 +30,17 @@
             <tbody>
           <% @articles.each do |article| %>
             <tr class="active">
-              <td>
+              <td class="favourite-source">
                 <% if article.source == "ruby-flow" %>
-                   <%= image_tag 'rubylogo.png', class: 'icon' %>
+                   <%= image_tag 'rubylogo.png', class: 'source-icon' %>
                 <% elsif article.source == "hacker-news" %>
-                   <%= image_tag 'hackernews.ico', class: 'icon' %>
+                   <%= image_tag 'hackernews.ico', class: 'source-icon' %>
                 <% else %>
-                   <%= image_tag 'thoughtbot.png', class: 'icon' %>
+                   <%= image_tag 'thoughtbot.png', class: 'source-icon' %>
                 <% end %>
               </td>
               <td>
-                <a href="<%=article.article_link%>">
+                <a href="<%=article.article_link %>" target="_blank">
                   <%= article.title %>
                 </a>
               </td>
@@ -48,16 +48,21 @@
                 <% if article.description.present? %>
                   <%= article.description %>
                 <% else %>
-                  No description available... 
+                  No description available...
                 <% end %>
               </td>
               <td>
-                <a href="<%=article.author_link%>">
+                <a href="<%=article.author_link%>" target="_blank">
                   <%= article.author %>
                 </a>
               </td>
               <td>
                 <%= article.created_at.strftime("%b %d, %Y") %>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger delete-article" data-article-id="<%=article.id%>">
+                  <span class="glyphicon glyphicon-trash"></span>
+                </button>
               </td>
             </tr>
           <% end %>

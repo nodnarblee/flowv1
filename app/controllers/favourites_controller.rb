@@ -18,8 +18,7 @@ class FavouritesController < ApplicationController
     if @article.save
       flash.now[:notice] = 'Nice, your article has been saved!'
     end
-    # render template: "pages/home", status: 200
-    # redirect_to {controller: :pages, action: :home}
+
     render nothing: true
   end
 

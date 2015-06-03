@@ -3,10 +3,9 @@ var ready = function() {
     $('.favourite').on('click', function(){
 
         var article = this.parentElement
-        //console.log(article)
-        var source = $(article).data("source")
-        var article_link = $(article).find('.title').attr('href')
-        var author_link = $(article).find('.author').attr('href')
+        var source = $(article).data("source");
+        var article_link = $(article).find('.title').attr('href');
+        var author_link = $(article).find('.author').attr('href');
         var description = $(article).find('.description').text().toString();
         var title = $(article).find('.title').text().toString();
         var author = $(article).find('.author').text().toString();
@@ -19,9 +18,8 @@ var ready = function() {
                     author: author,
                     author_link: author_link,
                     article_link: article_link,
-                    source: source},
+                    source: source },
             success: function(){
-                console.log('firing');
                 console.log($(article));
                 $(article).fadeOut("slow", function(){
                     $(article).remove();
@@ -29,13 +27,25 @@ var ready = function() {
             }
         });
 
-        //var source = $(article).find('title')
-        console.log(source)
-        //console.log($(source).data("source"))
-        //console.log($(article).html().data("source"))
-        //console.log($(article).find('title').data("source"))
-
     });
+
+    $('.delete-article').on('click', function(){
+
+        //console.log($(this).closest('tr'))
+        var that = $(this)
+        article_id = $(this).data('article-id');
+        $.ajax({
+            url: "/articles/destroy/" + article_id,
+            type: "delete",
+            dataType: "html",
+            success: function(){
+                var article_row = that.closest('tr');
+                article_row.fadeOut(function(){
+                    article_row.remove;
+                });
+            }
+        });
+    })
 }
 
 $(document).ready(ready);

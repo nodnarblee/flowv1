@@ -9,7 +9,11 @@ Flowv1::Application.routes.draw do
   get "posts/:id", to: "pages#show_post", as: "post"
   devise_for :users
 
+  #create an article/favourite
   post "favourites/favourite_article", to: "favourites#favourite_article"
+
+  #destroy an article/favourite
+  delete "articles/destroy/:id", to: "articles#destroy"
 
   namespace :admin do
     root "base#index"
