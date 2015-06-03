@@ -4,7 +4,7 @@ class Article < ActiveRecord::Base
 
   # validates :title, uniqueness: { scope: user_id }
 
-  has_many :favourites
+  has_many :favourites, dependent: :destroy
   has_many :users, through: :favourites
 
   def self.create(title, author, description, current_user)

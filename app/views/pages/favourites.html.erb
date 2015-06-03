@@ -28,44 +28,52 @@
             </tr>
             </thead>
             <tbody>
-          <% @articles.each do |article| %>
-            <tr class="active">
-              <td class="favourite-source">
-                <% if article.source == "ruby-flow" %>
-                   <%= image_tag 'rubylogo.png', class: 'source-icon' %>
-                <% elsif article.source == "hacker-news" %>
-                   <%= image_tag 'hackernews.ico', class: 'source-icon' %>
-                <% else %>
-                   <%= image_tag 'thoughtbot.png', class: 'source-icon' %>
-                <% end %>
-              </td>
-              <td>
-                <a href="<%=article.article_link %>" target="_blank">
-                  <%= article.title %>
-                </a>
-              </td>
-              <td>
-                <% if article.description.present? %>
-                  <%= article.description %>
-                <% else %>
-                  No description available...
-                <% end %>
-              </td>
-              <td>
-                <a href="<%=article.author_link%>" target="_blank">
-                  <%= article.author %>
-                </a>
-              </td>
-              <td>
-                <%= article.created_at.strftime("%b %d, %Y") %>
-              </td>
-              <td>
-                <button type="button" class="btn btn-danger delete-article" data-article-id="<%=article.id%>">
-                  <span class="glyphicon glyphicon-trash"></span>
-                </button>
-              </td>
-            </tr>
-          <% end %>
+          <% if @articles.present? %>
+              <% @articles.each do |article| %>
+                <tr class="active">
+                  <td class="favourite-source">
+                    <% if article.source == "ruby-flow" %>
+                       <%= image_tag 'rubylogo.png', class: 'source-icon' %>
+                    <% elsif article.source == "hacker-news" %>
+                       <%= image_tag 'hackernews.ico', class: 'source-icon' %>
+                    <% else %>
+                       <%= image_tag 'thoughtbot.png', class: 'source-icon' %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <a href="<%=article.article_link %>" target="_blank">
+                      <%= article.title %>
+                    </a>
+                  </td>
+                  <td>
+                    <% if article.description.present? %>
+                      <%= article.description %>
+                    <% else %>
+                      No description available...
+                    <% end %>
+                  </td>
+                  <td>
+                    <a href="<%=article.author_link%>" target="_blank">
+                      <%= article.author %>
+                    </a>
+                  </td>
+                  <td>
+                    <%= article.created_at.strftime("%b %d, %Y") %>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-danger delete-article" data-article-id="<%=article.id%>">
+                      <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                  </td>
+                </tr>
+              <% end %>
+            <% else %>
+                <tr class="active">
+                  <div class="no-favourites">
+                    <h2> Oops! You don't seem to have any favourited articles...</h2>
+                  </div>
+                </tr>
+            <% end %>
             </tbody>
           </table>
 

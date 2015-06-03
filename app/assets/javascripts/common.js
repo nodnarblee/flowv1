@@ -31,7 +31,6 @@ var ready = function() {
 
     $('.delete-article').on('click', function(){
 
-        //console.log($(this).closest('tr'))
         var that = $(this)
         article_id = $(this).data('article-id');
         $.ajax({
