@@ -27,3 +27,33 @@
 .nav .navbar-nav .container {
   margin-left: 50px;
 }
+
+.carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev {
+  margin-left: -105px;
+}
+
+.carousel-control .glyphicon-chevron-right, .carousel-control .icon-prev {
+  margin-right: -85px;
+}
+
+.carousel-control .glyphicon-chevron-right {
+  font-size: 55px;
+  margin-top: -535px;
+}
+
+.carousel-control .glyphicon-chevron-left {
+  font-size: 55px;
+  margin-top: -535px;
+}
+
+.carousel-control {
+  color: #ff6666;
+}
+
+.carousel-control.left {
+  background-image: none;
+}
+
+.carousel-control.right {
+  background-image: none;
+}
