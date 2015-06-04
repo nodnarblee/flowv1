@@ -1,13 +1,17 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!, only: [
-    :inside
+    :favourites
   ]
-  before_action :ruby_flow, only: [:home]
 
   def home
-    @rf = ruby_flow
-    @hn = hacker_news
-    @tb = thought_bot
+
+    @rf = ArticleScraper.fetch_json_for(:ruby_flow)
+    @hn = ArticleScraper.fetch_json_for(:hacker_news)
+    @tb = ArticleScraper.fetch_json_for(:thought_bot)
+    @rd = ArticleScraper.fetch_json_for(:reddit)
+    @tc = ArticleScraper.fetch_json_for(:tech_crunch)
+    @rc = ArticleScraper.fetch_json_for(:ruby_corner)
+
   end
 
   def favourites
@@ -35,23 +39,6 @@ class PagesController < ApplicationController
       ContactMailer.contact_message(@name,@email,@message).deliver_now
       redirect_to root_path, notice: "Your message was sent. Thank you."
     end
-  end
-
-  private
-
-  def ruby_flow
-    response  = JSON(RestClient.get 'https://www.kimonolabs.com/api/6xvfa604?apikey=tkXmEDE5rZ4G9HyMPKZWOiuMG7pWCJv3')
-    ruby_flow = response["results"]["collection1"]
-  end
-
-  def hacker_news
-    response = JSON(RestClient.get 'https://www.kimonolabs.com/api/cq4sa5qy?apikey=tkXmEDE5rZ4G9HyMPKZWOiuMG7pWCJv3')
-    hacker_news = response["results"]["collection1"]
-  end
-
-  def thought_bot
-    response = JSON(RestClient.get 'https://www.kimonolabs.com/api/5agteaga?apikey=tkXmEDE5rZ4G9HyMPKZWOiuMG7pWCJv3')
-    thought_bot = response["results"]["collection1"]
   end
 
 end

@@ -1,19 +1,15 @@
 class Article < ActiveRecord::Base
 
-  # include ArticleValidations
-
-  # validates :title, uniqueness: { scope: user_id }
-
   has_many :favourites, dependent: :destroy
   has_many :users, through: :favourites
 
-  def self.create(title, author, description, current_user)
-    Article.create(
-               user_id: current_user.id,
-               title:   title,
-               author:  author,
-               description: description
-    )
+  before_create :scrub_fields_of_new_lines
+
+  private
+  def scrub_fields_of_new_lines
+    [:title, :author, :description, :article_link, :author_link, :source].each do |col|
+      self[col] = self[col].gsub("\n", ' ').squeeze(' ')
+    end
   end
 
 end

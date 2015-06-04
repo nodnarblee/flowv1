@@ -1,25 +1,45 @@
 class FavouritesController < ApplicationController
 
+  respond_to :json, :html
+
   def favourite_article
-    title = params[:title].gsub("\n", ' ').squeeze(' ')
-    author = params[:author].gsub("\n", ' ').squeeze(' ')
-    description = params[:description].gsub("\n", ' ').squeeze(' ')
-    article_link = params[:article_link].gsub("\n", ' ').squeeze(' ')
-    author_link = params[:author_link].gsub("\n", ' ').squeeze(' ')
-    source = params[:source]
-
-    @article = current_user.articles.create(title: title,
-                                            author: author,
-                                            description: description,
-                                            article_link: article_link,
-                                            author_link: author_link,
-                                            source: source)
-
-    if @article.save
-      flash.now[:notice] = 'Nice, your article has been saved!'
+    article = current_user.articles.create(title: params[:title],
+                                           author: params[:author],
+                                           description: params[:description],
+                                           article_link: params[:article_link],
+                                           author_link: params[:author_link],
+                                           source: params[:source])
+    # binding.pry
+    # respond_with(article)
+    if article.persisted?
+      head :ok
+    else
+      render json: { errors: article.errors.full_messages }, status: 406
     end
-
-    render nothing: true
   end
-
 end
+
+
+# CreateFavouriteService.call( current_user, params.slice(:title, :author, etc...) )
+#
+# class CreateFavouriteService
+#
+#   # returns boolean. True if new article created.
+#   def self.call( user, data_opts = {} )
+#     raise 'favourite requires some data' if data_opts.blank?
+#
+#     article = user.articles.create(title: data_opts[:title],
+#                          author: data_opts[:author],
+#                          description: data_opts[:description],
+#                          article_link: data_opts[:article_link],
+#                          author_link: data_opts[:author_link],
+#                          source: data_opts[:source])
+#
+#     article.persisted?
+#   end
+#
+#   # helper methods here...
+#
+#
+#
+# end

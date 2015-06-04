@@ -39,9 +39,11 @@
                             <%= post["author"]["text"] %>
                           </a>
                         </p>
+                        <% if current_user.present? %>
                         <button type="button" class="btn btn-xs favourite">
                           <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Favorite This!
                         </button>
+                        <% end %>
                       </blockquote>
 
                   <% end %>
@@ -71,9 +73,11 @@
                             <%= post["comments"]["text"] %>
                           </a>
                         </p>
+                        <% if current_user.present? %>
                         <button type="button" class="btn btn-xs favourite">
                           <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Favorite This!
                         </button>
+                        <% end %>
                       </blockquote>
 
                   <% end %>
@@ -100,30 +104,118 @@
                             <%= post["Author"]["text"] %>
                           </a>
                         </p>
+                        <% if current_user.present? %>
                         <button type="button" class="btn btn-xs favourite">
                           <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Favorite This!
                         </button>
+                        <% end %>
                       </blockquote>
 
                   <% end %>
                 </div>
               </div>
             </div>
-            <div class="carousel-caption">
-              <h3>First slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-          </div>
-          <div class="item">
-            <h2>Slide 2</h2>
-            <div class="carousel-caption">
-              <h3>Second slide label</h3>
-              <p>Aliquam sit amet gravida nibh, facilisis gravida odio.</p>
-            </div>
           </div>
 
+          <div class="item">
+            <div class="col-md-4 column">
+              <h2 class="text-center"> /r/rails <%= image_tag "reddit.png", class: "icon" %> </h2>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <% @rd.each do |post| %>
+                      <blockquote class="block" data-source="reddit" >
+                        <h3 class="text-left">
+                          <a href = <%= post["title"]["href"] %> target="_blank" class="title" data-source="reddit" >
+                            <%= post["title"]["text"] %>
+                          </a>
+                        </h3>
+                        <p class="text-left">
+                          <a href = <%= post["comments"]["href"] %> target="_blank" class="description"  >
+                            <%= post["comments"]["text"] %>
+                          </a>
+                          by:
+                          <a href = <%= post["author"]["href"] %> target="_blank" class="author"  >
+                            <%= post["author"]["text"] %>
+                          </a>
+                        </p>
+                        <% if current_user.present? %>
+                        <button type="button" class="btn btn-xs favourite">
+                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Favorite This!
+                        </button>
+                        <% end %>
+                      </blockquote>
+                  <% end %>
+                </div>
+              </div>
+          </div>
+            <div class="col-md-4 column">
+              <h2 class="text-center"> TechCrunch <%= image_tag "techcrunch.png", class: "icon" %> </h2>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <% @tc.each do |post| %>
+                      <blockquote class="block" data-source="tech-crunch" >
+                        <h3 class="text-left">
+                          <a href = <%= post["title"]["href"] %> target="_blank" class="title" data-source="tech-crunch" >
+                            <%= post["title"]["text"] %>
+                          </a>
+                        </h3>
+                        <p class="text-left">
+                          <a href = <%= post["description"]["href"] %> target="_blank" class="description"  >
+                            <%= post["description"]["text"] %>
+                          </a>
+                          by:
+                          <a href = <%= post["author"]["href"] %> target="_blank" class="author"  >
+                            <%= post["author"]["text"] %>
+                          </a>
+                        </p>
+                        <% if current_user.present? %>
+                        <button type="button" class="btn btn-xs favourite">
+                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Favorite This!
+                        </button>
+                        <% end %>
+                      </blockquote>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 column">
+              <h2 class="text-center"> <%= image_tag "rubycorner.png", class: "icon-ruby" %> </h2>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <% @rc.each do |post| %>
+                      <blockquote class="block" data-source="ruby-corner" >
+                        <h3 class="text-left">
+                          <% if post["description"][0].present? %>
+                          <a href = <%= post["description"][0]["href"] %> target="_blank" class="title" data-source="ruby-corner" >
+                            <%= post["description"][0]["text"]%>
+                          </a>
+                          <% elsif post["description"].empty? %>
+                          <a href = <%= post["description"]["href"] %> target="_blank" class="title" data-source="ruby-corner" >
+                            <%= post["description"]["text"]%>
+                          </a>
+                          <% else %>
+                          Untitled!
+                          <% end %>
+                        </h3>
+                        <p class="text-left">
+                          <a href = <%= post["author"]["href"] %> target="_blank" class="description"  >
+                            <%= post["author"]["text"] %>
+                          </a>
+                        </p>
+                        <% if current_user.present? %>
+                        <button type="button" class="btn btn-xs favourite">
+                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Favorite This!
+                        </button>
+                        <% end %>
+                      </blockquote>
+                  <% end %>
+                </div>
+              </div>
+            </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 </div>

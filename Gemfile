@@ -45,6 +45,9 @@ group :development, :test do
 
   # Annotate_Models: https://github.com/ctran/annotate_models
   gem 'annotate', '2.6.10'
+
+  # Rspec
+  gem 'rspec-rails'
 end
 
 
