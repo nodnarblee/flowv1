@@ -3,7 +3,7 @@ Flowv1::Application.routes.draw do
   get "home", to: "pages#home", as: "home"
   get "favourites", to: "pages#favourites", as: "favourites"
   get "/contact", to: "pages#contact", as: "contact"
-  post "/emailconfirmation", to: "pages#email", as: "email_confirmation"
+  post "/emailconfirmation", to: "contact_messages#email", as: "email_confirmation"
 
   get "posts", to: "pages#posts", as: "posts"
   get "posts/:id", to: "pages#show_post", as: "post"
@@ -13,7 +13,7 @@ Flowv1::Application.routes.draw do
   post "favourites/favourite_article", to: "favourites#favourite_article"
 
   #destroy an article/favourite
-  delete "articles/destroy/:id", to: "articles#destroy"
+  delete "articles/destroy/:id", to: "articles#destroy", as: "article_destroy"
 
   namespace :admin do
     root "base#index"

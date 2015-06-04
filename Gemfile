@@ -48,8 +48,18 @@ group :development, :test do
 
   # Rspec
   gem 'rspec-rails'
+
+  # Shoulda Matchers
+  gem 'shoulda-matchers'
+
+  # Factory Girl
+  gem 'factory_girl_rails'
 end
 
+group :test do
+  # Database Cleaner
+  gem 'database_cleaner'
+end
 
 # SQLite 3
 group :development, :test do

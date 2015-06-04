@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
   end
   
 # Relations
-has_many :posts
 has_many :favourites
 has_many :articles, through: :favourites
 
@@ -32,6 +31,7 @@ has_many :articles, through: :favourites
   validates :username, length: { in: 4..15 }
   # :email
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+
 
   def self.paged(page_number)
     order(admin: :desc, username: :asc).page page_number

@@ -9,8 +9,8 @@ class FavouritesController < ApplicationController
                                            article_link: params[:article_link],
                                            author_link: params[:author_link],
                                            source: params[:source])
-    # binding.pry
-    # respond_with(article)
+
+
     if article.persisted?
       head :ok
     else
