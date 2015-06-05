@@ -20,7 +20,7 @@ var ready = function() {
                     article_link: article_link,
                     source: source },
             success: function(){
-                console.log($(article));
+                $(".notice").html("<%= flash[:notice] %>");
                 $(article).fadeOut("slow", function(){
                     $(article).remove();
                 });
@@ -30,7 +30,6 @@ var ready = function() {
     });
 
     $('.delete-article').on('click', function(){
-
         var that = $(this)
         article_id = $(this).data('article-id');
         $.ajax({

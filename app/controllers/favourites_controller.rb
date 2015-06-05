@@ -16,6 +16,7 @@ class FavouritesController < ApplicationController
     else
       render json: { errors: article.errors.full_messages }, status: 406
     end
+
   end
 
 end

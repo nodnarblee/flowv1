@@ -54,6 +54,12 @@ group :development, :test do
 
   # Factory Girl
   gem 'factory_girl_rails'
+
+  # Selenium Webdriver
+  gem 'selenium-webdriver'
+
+  # Capybara
+  gem 'capybara'
 end
 
 group :test do
