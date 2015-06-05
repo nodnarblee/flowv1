@@ -1,5 +1,6 @@
 class ContactMessage < ActiveRecord::Base
 
+  # Validations
   validates :name, :email, :message, presence: true
   validates :message, length: { minimum: 10 }
   validates :email,

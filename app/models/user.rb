@@ -12,9 +12,9 @@ class User < ActiveRecord::Base
     end
   end
   
-# Relations
-has_many :favourites
-has_many :articles, through: :favourites
+  # Relations
+  has_many :favourites
+  has_many :articles, through: :favourites
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

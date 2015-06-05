@@ -5,8 +5,6 @@ Flowv1::Application.routes.draw do
   get "/contact", to: "pages#contact", as: "contact"
   post "/emailconfirmation", to: "contact_messages#email", as: "email_confirmation"
 
-  get "posts", to: "pages#posts", as: "posts"
-  get "posts/:id", to: "pages#show_post", as: "post"
   devise_for :users
 
   #create an article/favourite
