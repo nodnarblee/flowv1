@@ -3,6 +3,7 @@ class FavouritesController < ApplicationController
   respond_to :json, :html
 
   def favourite_article
+
     article = current_user.articles.create(title: params[:title],
                                            author: params[:author],
                                            description: params[:description],

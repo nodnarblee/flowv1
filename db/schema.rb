@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604182245) do
+ActiveRecord::Schema.define(version: 20150605041822) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",        limit: 255
     t.string   "author",       limit: 255
-    t.string   "description",  limit: 255
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "description",  limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "author_link",  limit: 255
     t.string   "article_link", limit: 255
     t.string   "source",       limit: 255

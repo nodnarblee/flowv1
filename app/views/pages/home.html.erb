@@ -9,12 +9,6 @@
   <div class="row clearfix">
     <div class="bs-example">
       <div id="myCarousel" class="carousel slide" data-interval=false data-ride="carousel">
-        <!-- Carousel indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
         <!-- Carousel items -->
         <div class="carousel-inner">
           <div class="active item">
@@ -185,24 +179,34 @@
                 <div class="panel-body">
                   <% @rc.each do |post| %>
                       <blockquote class="block" data-source="ruby-corner" >
+                        <% if post["author"]["href"].present? && post["title"]["href"].present? %>
                         <h3 class="text-left">
-                          <% if post["description"][0].present? %>
-                          <a href = <%= post["description"][0]["href"] %> target="_blank" class="title" data-source="ruby-corner" >
-                            <%= post["description"][0]["text"]%>
+                          <a href = <%= post["title"]["href"] %> target="_blank" class="title" data-source="ruby-corner" >
+                            <%= post["title"]["text"]%>
                           </a>
-                          <% elsif post["description"].empty? %>
-                          <a href = <%= post["description"]["href"] %> target="_blank" class="title" data-source="ruby-corner" >
-                            <%= post["description"]["text"]%>
+                          <% elsif post["author"]["href"].present? && !post["title"]["href"].present? %>
+                          <a href = <%= post["author"]["href"] %> target="_blank" class="title" data-source="ruby-corner" >
+                            <%= post["author"]["text"]%>
                           </a>
                           <% else %>
-                          Untitled!
-                          <% end %>
-                        </h3>
-                        <p class="text-left">
-                          <a href = <%= post["author"]["href"] %> target="_blank" class="description"  >
-                            <%= post["author"]["text"] %>
+                          <a href = <%= post["title"]["href"] %> target="_blank" class="title" data-source="ruby-corner" >
+                            <%= post["title"]["text"]%>
                           </a>
-                        </p>
+                        </h3>
+                          <% end %>
+                          <% if post["author"]["href"].present? && post["title"]["href"].present? %>
+                            <p class="text-left">
+                              <a href = <%= post["author"]["href"] %> target="_blank" class="description"  >
+                                <%= post["author"]["text"] %>
+                              </a>
+                            </p>
+                            <% else %>
+                            <h3 class="text-left">
+                              <a href = <%= post["author"]["href"] %> target="_blank" class="description"  >
+                                <%= post["author"]["text"] %>
+                              </a>
+                            </h3>
+                          <% end %>
                         <% if current_user.present? %>
                         <button type="button" class="btn btn-xs favourite">
                           <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Favorite This!
